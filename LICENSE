@@ -1,0 +1,36 @@
+Copyright (c) 2025 National AIDS & STI Control Programme (NASCOP)
+Ministry of Health, Government of Kenya
+All rights reserved.
+
+PROPRIETARY AND CONFIDENTIAL
+
+This repository and its contents — including configuration files, documentation,
+and all associated materials — are the property of the National AIDS & STI Control
+Programme (NASCOP), Ministry of Health, Government of Kenya.
+
+PERMITTED USE
+Access to and use of this repository is restricted to personnel who have been
+expressly authorised by NASCOP. Authorised users may use this software solely
+for HIV programme monitoring, reporting, and analysis activities in support of
+the national HIV response.
+
+RESTRICTIONS
+Unauthorised persons may not access, use, copy, modify, merge, publish,
+distribute, sublicense, or sell copies of this software or any part thereof.
+Authorised users may not:
+  - Attempt to re-identify de-identified or pseudonymised data
+  - Use programme data for commercial purposes
+  - Share access credentials (Bearer tokens) with unauthorised persons
+  - Export or transmit raw programme data outside of approved channels
+
+DATA PROTECTION
+All data accessible through this tool is governed by the Kenya Data Protection
+Act, 2019 (No. 24 of 2019) and applicable NASCOP data sharing policies. Users
+are legally obligated to handle data in accordance with these frameworks.
+Violations may result in revocation of access and legal liability under
+Kenyan law.
+
+DISCLAIMER
+This software is provided "as is", without warranty of any kind. NASCOP and the
+Ministry of Health, Government of Kenya shall not be liable for any claim,
+damages, or other liability arising from the use of this software.
