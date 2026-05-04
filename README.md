@@ -1,6 +1,6 @@
-# NASCOP Reporting DWH — MCP Setup Guide
+# NASCOP DWH Reporting layer — MCP Setup Guide
 
-This repository contains configuration files for connecting AI coding tools to the NASCOP Reporting Data Warehouse MCP (Model Context Protocol) server.
+This repository contains configuration files for connecting AI coding tools to the NASCOP Data Warehouse MCP (Model Context Protocol) server.
 
 **Server endpoint:** `https://insights.nascop.org/mcp`
 
