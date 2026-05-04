@@ -223,7 +223,22 @@ Once connected, ask questions in plain English — the AI will call the MCP serv
 1. Type your question at the `claude` prompt.
 2. Claude will call the MCP tool and show the result inline.
 
-### Example prompts by topic
+### Step 1 — Explore what data is available
+
+Before asking specific questions, start by asking the AI what the DWH contains. This helps you understand what topics, filters, and breakdowns are possible.
+
+Suggested opening prompts:
+
+- *"What datasets or tables are available in the reporting DWH?"*
+- *"What HIV programme areas does this data cover?"*
+- *"What columns are available in the ART data?"*
+- *"What geographic filters can I use — county, sub-county, facility?"*
+- *"What time periods does the data cover?"*
+- *"What age group breakdowns are available?"*
+
+The AI will query the MCP server and describe the available data before you start asking analytical questions.
+
+### Step 2 — Example prompts by topic
 
 | Topic | Example prompt |
 |-------|---------------|
