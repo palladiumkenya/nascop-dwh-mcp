@@ -6,7 +6,7 @@ This repository contains configuration files for connecting AI coding tools to t
 
 > **Before you start:** Replace every occurrence of `YOUR_BEARER_TOKEN_HERE` in the config files with the Bearer token provided to you by the NASCOP DWH administrator. Never commit the real token to a repository.
 
-> **Data protection notice:** By configuring and using this MCP server you confirm that you are an authorised NASCOP programme user, that you will use the data solely for HIV programme monitoring and reporting purposes, and that you will handle all data in accordance with the **Kenya Data Protection Act, 2019**. Unauthorised access or misuse may result in revocation of access and legal liability.
+> **Data protection notice:** By configuring and using this MCP server you confirm that you are an authorised NASCOP user, that you will use the data solely for HIV programme monitoring and reporting purposes, and that you will handle all data in accordance with the **Kenya Data Protection Act, 2019**. Unauthorised access or misuse may result in revocation of access and legal liability.
 
 ---
 
@@ -18,13 +18,14 @@ MCP (Model Context Protocol) lets AI assistants query live data sources — in t
 
 ## Setting your token
 
-Each config file contains the placeholder `YOUR_BEARER_TOKEN_HERE`. Replace it in all four files before use:
+Each config file contains the placeholder `YOUR_BEARER_TOKEN_HERE`. Replace it in the file(s) for the tool(s) you intend to use:
 
-| File | Where to replace |
-|------|-----------------|
-| [.vscode/mcp.json](.vscode/mcp.json) | `"Authorization"` header value |
-| [.mcp.json](.mcp.json) | `"Authorization"` header value |
-| [.codex/config.toml](.codex/config.toml) | `Authorization` header value |
+| Tool | Config file | Where to replace |
+|------|------------|-----------------|
+| GitHub Copilot (VS Code) | [.vscode/mcp.json](.vscode/mcp.json) | `"Authorization"` header value |
+| Claude extension (VS Code) | [.vscode/mcp.json](.vscode/mcp.json) | `"Authorization"` header value |
+| OpenAI Codex CLI | [.codex/config.toml](.codex/config.toml) | `Authorization` header value |
+| Claude Code CLI | [.mcp.json](.mcp.json) | `"Authorization"` header value |
 
 `.claude/settings.json` does not contain a token and does not need editing.
 
@@ -82,7 +83,45 @@ This registers the MCP server inside VS Code so that any MCP-compatible AI exten
 
 ---
 
-## Config 2: Claude Code CLI (`.mcp.json` + `.claude/settings.json`)
+## Config 2: OpenAI Codex CLI (`.codex/config.toml`)
+
+**File:** [.codex/config.toml](.codex/config.toml)
+
+### Setup steps
+
+1. **Install the Codex CLI** if you have not already:
+   ```
+   npm install -g @openai/codex
+   ```
+
+2. **Clone or copy this folder** to your machine and open a terminal inside it.
+
+3. **Replace the token** in `.codex/config.toml` — change `YOUR_BEARER_TOKEN_HERE` to the real token.
+
+4. **Launch Codex** from inside the folder:
+   ```
+   codex
+   ```
+   The `.codex/config.toml` file is loaded automatically.
+
+5. **Verify the server** — Codex lists active MCP servers on startup. Look for `reporting-dwh: enabled`.
+
+6. **Start querying** — see the [Using the MCP](#using-the-mcp) section below.
+
+### Config reference
+
+```toml
+[mcp_servers.reporting-dwh]
+enabled = true
+url = "https://insights.nascop.org/mcp"
+
+[mcp_servers.reporting-dwh.http_headers]
+Authorization = "Bearer YOUR_BEARER_TOKEN_HERE"
+```
+
+---
+
+## Config 3: Claude Code CLI (`.mcp.json` + `.claude/settings.json`)
 
 Two files work together for Claude Code CLI:
 
@@ -158,63 +197,30 @@ The `Bash(curl:*)` permission allows Claude to run `curl` commands (e.g. to test
 
 ---
 
-## Config 3: OpenAI Codex CLI (`.codex/config.toml`)
-
-**File:** [.codex/config.toml](.codex/config.toml)
-
-### Setup steps
-
-1. **Install the Codex CLI** if you have not already:
-   ```
-   npm install -g @openai/codex
-   ```
-
-2. **Clone or copy this folder** to your machine and open a terminal inside it.
-
-3. **Replace the token** in `.codex/config.toml` — change `YOUR_BEARER_TOKEN_HERE` to the real token.
-
-4. **Launch Codex** from inside the folder:
-   ```
-   codex
-   ```
-   The `.codex/config.toml` file is loaded automatically.
-
-5. **Verify the server** — Codex lists active MCP servers on startup. Look for `reporting-dwh: enabled`.
-
-6. **Start querying** — see the [Using the MCP](#using-the-mcp) section below.
-
-### Config reference
-
-```toml
-[mcp_servers.reporting-dwh]
-enabled = true
-url = "https://insights.nascop.org/mcp"
-
-[mcp_servers.reporting-dwh.http_headers]
-Authorization = "Bearer YOUR_BEARER_TOKEN_HERE"
-```
-
----
-
 ## Using the MCP
 
 Once connected, ask questions in plain English — the AI will call the MCP server automatically when it needs data.
 
-### With Claude Code VS Code extension
-
-1. Open the **Claude** panel from the Activity Bar or press `Ctrl+Shift+P` → **Claude: Open Chat**.
-2. Type your question. Claude shows a **tool call badge** when fetching from the MCP server — click it to see the query sent.
-3. Follow up in the same thread: *"Break that down by age band"* or *"Show as a table."*
-
-### With GitHub Copilot Chat
+### With GitHub Copilot Chat (VS Code)
 
 1. Open Copilot Chat: `Ctrl+Shift+P` → **GitHub Copilot: Open Chat**.
 2. Ask naturally, or prefix with `#reporting-dwh` to target the tool explicitly.
 3. Copilot shows a **tool invocation card** before the answer.
 
+### With Claude extension (VS Code)
+
+1. Open the **Claude** panel from the Activity Bar or press `Ctrl+Shift+P` → **Claude: Open Chat**.
+2. Type your question. Claude shows a **tool call badge** when fetching from the MCP server — click it to see the query sent.
+3. Follow up in the same thread: *"Break that down by age band"* or *"Show as a table."*
+
+### With OpenAI Codex CLI
+
+1. Type your question at the `codex` prompt.
+2. Codex will invoke the MCP tool and display the result inline.
+
 ### With Claude Code CLI
 
-1. Just type your question at the `claude` prompt.
+1. Type your question at the `claude` prompt.
 2. Claude will call the MCP tool and show the result inline.
 
 ### Example prompts by topic
