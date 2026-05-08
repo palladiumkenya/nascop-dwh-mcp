@@ -2,7 +2,7 @@
   "mcpServers": {
     "reporting-dwh": {
       "type": "http",
-      "url": "https://insights.nascop.org/mcp",
+      "url": "https://insights.kenyahmis.org/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_BEARER_TOKEN_HERE"
       }

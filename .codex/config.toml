@@ -1,6 +1,6 @@
 [mcp_servers.reporting-dwh]
 enabled = true
-url = "https://insights.nascop.org/mcp"
+url = "https://insights.kenyahmis.org/mcp"
 
 [mcp_servers.reporting-dwh.http_headers]
 Authorization = "Bearer YOUR_BEARER_TOKEN_HERE"

@@ -2,7 +2,7 @@
 
 This repository contains configuration files for connecting AI coding tools to the NASCOP Data Warehouse MCP (Model Context Protocol) server.
 
-**Server endpoint:** `https://insights.nascop.org/mcp`
+**Server endpoint:** `https://insights.kenyahmis.org/mcp`
 
 > **Before you start:** Replace every occurrence of `YOUR_BEARER_TOKEN_HERE` in the config files with the Bearer token provided to you by the NASCOP DWH administrator. Never commit the real token to a repository.
 
@@ -66,7 +66,7 @@ This registers the MCP server inside VS Code so that any MCP-compatible AI exten
   "servers": {
     "reporting-dwh": {
       "type": "http",
-      "url": "https://insights.nascop.org/mcp",
+      "url": "https://insights.kenyahmis.org/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_BEARER_TOKEN_HERE"
       }
@@ -113,7 +113,7 @@ This registers the MCP server inside VS Code so that any MCP-compatible AI exten
 ```toml
 [mcp_servers.reporting-dwh]
 enabled = true
-url = "https://insights.nascop.org/mcp"
+url = "https://insights.kenyahmis.org/mcp"
 
 [mcp_servers.reporting-dwh.http_headers]
 Authorization = "Bearer YOUR_BEARER_TOKEN_HERE"
@@ -156,7 +156,7 @@ Two files work together for Claude Code CLI:
 Run this to confirm the server responds before launching Claude:
 
 ```bash
-curl -s -i -X POST https://insights.nascop.org/mcp \
+curl -s -i -X POST https://insights.kenyahmis.org/mcp \
   -H "Authorization: Bearer YOUR_BEARER_TOKEN_HERE" \
   -H "Content-Type: application/json" \
   -H "Accept: application/json, text/event-stream" \
@@ -173,7 +173,7 @@ A successful response returns HTTP `200 OK` and a JSON body containing `"protoco
   "mcpServers": {
     "reporting-dwh": {
       "type": "http",
-      "url": "https://insights.nascop.org/mcp",
+      "url": "https://insights.kenyahmis.org/mcp",
       "headers": {
         "Authorization": "Bearer YOUR_BEARER_TOKEN_HERE"
       }
@@ -264,7 +264,7 @@ The AI will query the MCP server and describe the available data before you star
 | Server shows **Disconnected** | Network or wrong token | Run the manual `curl` test above |
 | `401 Unauthorized` | Token expired or incorrect | Contact the NASCOP DWH admin for a new token |
 | MCP server not listed | Wrong working directory | Open VS Code / terminal from inside this folder |
-| No tools available after connect | Server-side issue | Confirm `https://insights.nascop.org/mcp` is reachable |
+| No tools available after connect | Server-side issue | Confirm `https://insights.kenyahmis.org/mcp` is reachable |
 
 ---
 
